@@ -1,0 +1,19 @@
+<template>
+    <div class="container">
+        <slot></slot>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'VContainer',
+}
+</script>
+
+<style lang="sass" scoped>
+.container
+    max-width: 1433px
+    margin: 0px auto
+    padding: 0px 10px
+    +method(width, 100%, 90%, 85%, 75%)
+</style>

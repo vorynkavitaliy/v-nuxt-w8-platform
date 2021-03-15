@@ -1,0 +1,115 @@
+<template>
+    <nav id="navbar" class="navbar">
+        <ul
+            class="navbar-list flex-container space-between row column-msd row-ld"
+        >
+            <li
+                v-for="link of navlinks"
+                :key="link.text"
+                class="navbar-item mb-msd-3 mb-ld-0 mh-ld-2"
+            >
+                <nuxt-link :to="link.url" exact class="navbar-link mh-a">
+                    <span class="favicon m-a">
+                        <v-icon :icon="link.icon" :color="'#231f1f'" />
+                    </span>
+                    <v-text class="mh-a" size="m" weight="bold" tag="span">
+                        {{ link.text }}
+                    </v-text>
+                </nuxt-link>
+            </li>
+        </ul>
+    </nav>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            navlinks: [
+                {
+                    url: '/',
+                    text: 'Головна',
+                    icon: 'home',
+                },
+                {
+                    url: '/catalog-auto',
+                    text: 'Каталог авто',
+                    icon: 'machine',
+                },
+                {
+                    url: '/catalog-lots',
+                    text: 'Каталог лотів',
+                    icon: 'auction',
+                },
+                {
+                    url: '/blog',
+                    text: 'Блог',
+                    icon: 'note',
+                },
+                {
+                    url: '/models',
+                    text: 'Марки',
+                    icon: 'auto-mark',
+                },
+            ],
+        }
+    },
+}
+</script>
+
+<style lang="sass" scoped>
+.navbar
+    position: fixed
+    bottom: 0
+    left: 0
+    width: 100%
+    padding: 0 rem(8px, $dw-sd)
+    background: linear-gradient(317.85deg, #FAFAFA -11.18%, #F1F1F1 114.83%)
+    box-shadow: -3px -3px 8px #FFFFFF, 2px 2px 6px rgba(174, 174, 192, 0.4), inset 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.09), inset -1.5px -1.5px 1.5px #FFFFFF
+
+    +screen($dw-msd)
+        padding: 0
+        position: static
+        width: auto
+        background: transparent
+        box-shadow: none
+
+    &-list
+        grid-gap: rem(10px, $dw-ld)
+
+    &-item
+        text-align: center
+
+    &-link
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        height: 100%
+        padding: rem(8px, $dw-sd)
+
+        +screen($dw-msd)
+            padding: 0
+
+        span
+            display: block
+
+        .favicon
+            width: rem(24px, $dw-ld)
+
+            +screen($dw-msd)
+                width: 24px
+
+            +screen($dw-ld)
+                display: none
+
+        &:hover, &.nuxt-link-active
+            color: $pink
+
+            svg
+                fill: $pink
+
+        &.nuxt-link-active, &:active
+            +screenMax($dw-max-msd)
+                background: linear-gradient(270.65deg, #F1F2F7 -9.34%, #EDEEF4 108.28%)
+                box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.7), 3px 3.5px 10px rgba(0, 0, 0, 0.05), inset -4px -4px 7.5px #FFFFFF, inset 4px 4px 7.5px rgba(0, 0, 0, 0.14)
+</style>
